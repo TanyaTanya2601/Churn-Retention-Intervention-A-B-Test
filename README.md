@@ -1,6 +1,6 @@
 ## Churn/Retention Intervention A/B Test
 
-A data science portfolio project built to demonstrate the full workflow behind a targeted customer-retention program: predicting who's at risk of churning, deciding who to intervene on, running a randomized experiment to test the intervention, and analyzing the result the way a business stakeholder would actually want it analyzed — not just "did it work," but "was it worth the money."
+The project demonstrates the full workflow behind a targeted customer-retention program: predicting who's at risk of churning, deciding who to intervene on, running a randomized experiment to test the intervention, and analyzing the result the way a business stakeholder would actually want it analyzed — not just "did it work," but "was it worth the money."
 
 ## Overview 
 
