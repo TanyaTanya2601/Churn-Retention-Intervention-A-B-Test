@@ -1,8 +1,8 @@
-#### Churn/Retention Intervention A/B Test
+## Churn/Retention Intervention A/B Test
 
 A data science portfolio project built to demonstrate the full workflow behind a targeted customer-retention program: predicting who's at risk of churning, deciding who to intervene on, running a randomized experiment to test the intervention, and analyzing the result the way a business stakeholder would actually want it analyzed — not just "did it work," but "was it worth the money."
 
-### Overview 
+## Overview 
 
 I wanted to go beyond a simple "here's a churn model" notebook. Most churn projects stop at training a classifier and reporting accuracy, and I felt like that was only half the story — it tells you who might leave, but not what to actually do about it, or whether doing something even pays off. So I built this project to walk through the full loop:
 
@@ -28,24 +28,26 @@ To run this notebook yourself, download Churn_Modelling.csv from the link above.
 Loads the real Kaggle customer data and renames columns to consistent, readable names used throughout the rest of the notebook.
 
 2. Build the churn-propensity model
-Primary model: logistic regression, chosen for interpretability — the goal is to understand why the model flags someone as high-risk, not just trust an opaque score
-Comparison model: XGBoost, fit to check whether nonlinear structure meaningfully outperforms the simpler model
-Evaluation: AUC on a stratified train/test split, a leakage check confirming no feature encodes post-churn information, and a calibration curve confirming predicted probabilities are trustworthy (not just correctly ranked)
-3. Define the high-risk target segment
+   
+Primary model: logistic regression, chosen for interpretability — the goal is to understand why the model flags someone as high-risk, not just trust an opaque score.
+Comparison model: XGBoost, fit to check whether nonlinear structure meaningfully outperforms the simpler model.
+Evaluation: AUC on a stratified train/test split, a leakage check confirming no feature encodes post-churn information, and a calibration curve confirming predicted probabilities are trustworthy (not just correctly ranked).
+
+4. Define the high-risk target segment
 
 The model is refit on the full customer base and used to score everyone. The top 20% by predicted churn risk becomes the target segment for the retention offer — concentrating spend on the customers most likely to need it, rather than a blanket promotion to the entire customer base.
 
-4. Simulate the randomized experiment
+5. Simulate the randomized experiment
 
 Within the high-risk segment only, customers are randomly split 50/50 into treatment (receives the retention offer) and control. A pre-period balance check confirms the two groups are statistically comparable before the "intervention." The offer's simulated effect is then applied on top of each customer's baseline churn score.
 
-5. Analyze the results
+6. Analyze the results
+   
 Primary metric: retention rate, tested with a two-proportion z-test
 Robustness check: a regression-adjusted estimate (logistic regression with a treatment indicator plus covariates) to confirm the result holds up
 Guardrail metric: cost per incrementally retained customer, and the program's overall net value — because a statistically significant lift doesn't automatically mean the program was worth running
 Power check: a retrospective check confirming the segment was large enough to reliably detect an effect of this size
 Segment cuts: the effect broken out by customer tenure band, to check whether it holds broadly or is concentrated in one group
-6. Recommendation
 
 ## The notebook closes with a short decision-memo summary — hypothesis, design, result, and an honest list of limitations and next steps.
 
