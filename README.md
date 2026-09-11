@@ -1,8 +1,8 @@
-Churn/Retention Intervention A/B Test
+#### Churn/Retention Intervention A/B Test
 
 A data science portfolio project built to demonstrate the full workflow behind a targeted customer-retention program: predicting who's at risk of churning, deciding who to intervene on, running a randomized experiment to test the intervention, and analyzing the result the way a business stakeholder would actually want it analyzed — not just "did it work," but "was it worth the money."
 
-What this project is
+### Overview 
 
 I wanted to go beyond a simple "here's a churn model" notebook. Most churn projects stop at training a classifier and reporting accuracy, and I felt like that was only half the story — it tells you who might leave, but not what to actually do about it, or whether doing something even pays off. So I built this project to walk through the full loop:
 
@@ -13,17 +13,16 @@ Analyze the result properly — not just "did it work," but "was it worth the mo
 
 I put it together this way because I wanted a project that forced me to practice interpretable modeling, proper experiment design, and business/profitability thinking all together, rather than as three separate disconnected exercises.
 
-About the data
+## DATASET
 
 This project uses the real "Bank Customer Churn Modelling" dataset from Kaggle — customer-level data including tenure, balance, number of products, account activity, demographics, and whether the customer churned (Exited).
 
-Dataset source: Bank Customer Churn Modelling — Kaggle
+Dataset source: Bank Customer Churn Modelling — Kaggle [https://www.kaggle.com/datasets/aakash50897/churn-modellingcsv]
 
-To run this notebook yourself, download Churn_Modelling.csv from the link above and update the file path in Section 1 to point to wherever you've saved it.
+To run this notebook yourself, download Churn_Modelling.csv from the link above.
 
-One thing that is simulated rather than real: since there's no completed live experiment to pull results from, the retention offer's effect on churn is simulated — a clearly documented assumption (an 8-percentage-point reduction in churn probability for treated customers, plus individual-level noise) standing in for a real measured outcome. This is called out explicitly in the notebook itself rather than left implicit, so it's clear which parts of the analysis are real data and which part is a stated assumption about how customers would respond.
+## Explanation:
 
-What the notebook does, step by step
 1. Read the dataset
 
 Loads the real Kaggle customer data and renames columns to consistent, readable names used throughout the rest of the notebook.
@@ -48,7 +47,7 @@ Power check: a retrospective check confirming the segment was large enough to re
 Segment cuts: the effect broken out by customer tenure band, to check whether it holds broadly or is concentrated in one group
 6. Recommendation
 
-The notebook closes with a short decision-memo summary — hypothesis, design, result, and an honest list of limitations and next steps.
+## The notebook closes with a short decision-memo summary — hypothesis, design, result, and an honest list of limitations and next steps.
 
 Tech stack
 Purpose	Library
@@ -56,7 +55,8 @@ Data handling	pandas, numpy
 Modeling	scikit-learn (Logistic Regression), XGBoost
 Statistics / experiment analysis	statsmodels, scipy
 Visualization	matplotlib
-How to run this
+
+## How to run this?
 Clone this repository
 Install dependencies:
    pip install -r requirements.txt
